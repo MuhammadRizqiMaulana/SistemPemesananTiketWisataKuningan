@@ -26,6 +26,7 @@ class CreateTiketTable extends Migration
             $table->BigInteger('nomor_tiket')->unsigned();
             $table->date('tanggal_wisata');
             $table->date('waktu_hari');
+            $table->string('status_tiket',50);
             $table->timestamps();
         });
     }

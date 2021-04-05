@@ -13,8 +13,8 @@
                 <div class="text-content">
                   <h3>Selamat Datang di Wisata Kuningan</h3>
                   <h5>Pemesanan Tiket Online</h5>
-                  <a href="#" class="main-stroked-button">Lihat Wisata</a>
-                  <a href="#" class="main-filled-button">Pesan Tiket</a>
+                  <a href="#testimonials" class="main-filled-button">Pesan Tiket</a>
+                  <a href="#" class="main-stroked-button">Buat Akun</a>                  
                 </div>
             </div>
           </div>
@@ -26,8 +26,8 @@
                 <div class="text-content">
                   <h3>Integrated Marketing Media</h3>
                   <h5>Pemesanan Tiket Online</h5>
-                  <a href="#" class="main-stroked-button">Lihat Wisata</a>
-                  <a href="#" class="main-filled-button">Pesan Tiket</a>
+                  <a href="#testimonials" class="main-filled-button">Pesan Tiket</a>
+                  <a href="#" class="main-stroked-button">Buat Akun</a>
                 </div>
             </div>
           </div>
@@ -104,8 +104,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-heading">
-                        <h6>Wisata Kuningan</h6>
-                        <h2>Pilihan Wisata di Kuningan</h2>
+                        <h6 style="color: green">Wisata Kuningan</h6>
+                        <h2 style="color: black">Pilihan Wisata di Kuningan</h2>
                     </div>
                 </div>
                 @foreach($tempatWisata as $wisata)
@@ -119,9 +119,9 @@
                                 </div>
                             </div>
                         </div>
-                        <h4>{{$wisata->nama_wisata}}</h4>
-                        <span>Harga Tiket : @rupiah($wisata->harga)</span><br>
-                        <span>Tersedia : 200 tiket / belum bisa</span>
+                        <h4 style="color: green">{{$wisata->nama_wisata}}</h4>
+                        <span style="color: black">Harga Tiket : @rupiah($wisata->harga)</span><br>
+                        <span style="color: black">Tersedia : 200 tiket / belum bisa</span>
                     </div>
                     <br><br>
                 </div>
@@ -132,66 +132,6 @@
     </section>
     <!-- ***** Testimonials Ends ***** -->
     
-    <!-- ***** Contact Us Area Starts ***** -->
-    <section class="section" id="contact-us">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-xs-12">
-                    <div class="left-text-content">
-                        <div class="section-heading">
-                            <h6>Contact Us</h6>
-                            <h2>Feel free to keep in touch with us!</h2>
-                        </div>
-                        <ul class="contact-info">
-                            <li><img src="pelanggan/assets/images/contact-info-01.png" alt="">010-020-0860</li>
-                            <li><img src="pelanggan/assets/images/contact-info-02.png" alt="">info@company.com</li>
-                            <li><img src="pelanggan/assets/images/contact-info-03.png" alt="">www.company.com</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-8 col-md-8 col-xs-12">
-                    <div class="contact-form">
-                        <form id="contact" action="" method="get">
-                          <div class="row">
-                            <div class="col-md-6 col-sm-12">
-                              <fieldset>
-                                <input name="name" type="text" id="name" placeholder="Your Name *" required="">
-                              </fieldset>
-                            </div>
-                            <div class="col-md-6 col-sm-12">
-                              <fieldset>
-                                <input name="phone" type="text" id="phone" placeholder="Your Phone" required="">
-                              </fieldset>
-                            </div>
-                            <div class="col-md-6 col-sm-12">
-                              <fieldset>
-                                <input name="email" type="email" id="email" placeholder="Your Email *" required="">
-                              </fieldset>
-                            </div>
-                            <div class="col-md-6 col-sm-12">
-                              <fieldset>
-                                <input name="subject" type="text" id="subject" placeholder="Subject">
-                              </fieldset>
-                            </div>
-                            <div class="col-lg-12">
-                              <fieldset>
-                                <textarea name="message" rows="6" id="message" placeholder="Message" required=""></textarea>
-                              </fieldset>
-                            </div>
-                            <div class="col-lg-12">
-                              <fieldset>
-                                <button type="submit" id="form-submit" class="main-button-icon">Send Message Now <i class="fa fa-arrow-right"></i></button>
-                              </fieldset>
-                            </div>
-                          </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ***** Contact Us Area Ends ***** -->
-
 <!-- content -->
 
 @endsection
