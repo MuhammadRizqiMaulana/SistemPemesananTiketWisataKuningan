@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\ModelGaleri;
 use App\ModelTempatWisata;
 use Illuminate\Http\Request;
 use Session;
 
-class MengelolaTempatWisataController extends Controller
+class MengelolaGaleriController extends Controller
 {
         public function index()     {  
 
@@ -15,8 +16,8 @@ class MengelolaTempatWisataController extends Controller
         //}
         //else{
 
-        $datas = ModelTempatWisata::get();         
-        	return view('admin.halaman.MengelolaTempatWisata',compact('datas'));     
+        $datas = ModelGaleri::get();         
+        	return view('admin.halaman.MengelolaGaleri',compact('datas'));     
         //}  
     }
 
@@ -27,7 +28,9 @@ class MengelolaTempatWisataController extends Controller
         //}
         //else{
 		//
-        	return view('admin.halaman.tambah_data.TambahTempatWisata');
+            $wisata = ModelTempatWisata::get();         
+
+        	return view('admin.halaman.tambah_data.TambahGaleri',compact('wisata'));
         //}
     }
 
@@ -48,27 +51,21 @@ class MengelolaTempatWisataController extends Controller
         ];
 
     	$this->validate($request, [
-    		'nama_wisata' => 'required|max:50|unique:tempat_wisata',
-    		'alamat' => 'required|max:255',
-    		'maks_tiket' => 'required|numeric|min:0|digits_between:0,5',
-            'harga' => 'required|numeric|min:0|digits_between:0,15',
+    		'nama_wisata' => 'required|max:50',
     		'foto' => 'required|image|max:2048'
     	], $messages);
 
 
         $file = $request->file('foto'); // menyimpan data gambar yang diupload ke variabel $file
         $nama_file = time()."_".$file->getClientOriginalName();
-        $file->move('pelanggan/assets/images/fotowisata',$nama_file); // isi dengan nama folder tempat kemana file diupload
+        $file->move('pelanggan/assets/images/galeri',$nama_file); // isi dengan nama folder tempat kemana file diupload
 
-        $data = new ModelTempatWisata();
-        $data->nama_wisata = $request->nama_wisata;
-        $data->alamat = $request->alamat;
-        $data->maks_tiket = $request->maks_tiket;
-        $data->harga = $request->harga;        
-        $data->foto = $nama_file;
+        $data = new ModelGaleri();
+        $data->id_wisata = $request->nama_wisata;
+        $data->nama_foto = $nama_file;
 
     	$data->save();
-    	return redirect('/admin/MengelolaTempatWisata')->with('alert-success','Data berhasil ditambahkan!');
+    	return redirect('/admin/MengelolaGaleri')->with('alert-success','Data berhasil ditambahkan!');
     }
 
    	public function edit($id) {
@@ -78,8 +75,8 @@ class MengelolaTempatWisataController extends Controller
         }
         else{
 
-        	$datas = ModelTempatWisata::find($id);
-        	return view('admin.halaman.ubah_data.UbahTempatWisata',compact('datas'));
+        	$datas = ModelGaleri::find($id);
+        	return view('admin.halaman.ubah_data.UbahGaleri',compact('datas'));
         }
     }
 
@@ -99,14 +96,11 @@ class MengelolaTempatWisataController extends Controller
         ];
 
         $this->validate($request, [
-            'nama_wisata' => 'nullable|max:50|unique:tempat_wisata',
-    		'alamat' => 'required|max:255',
-    		'maks_tiket' => 'required|numeric|min:0|digits_between:0,5',
-            'harga' => 'required|numeric|min:0|digits_between:0,15',
-    		'foto' => 'nullable|image|max:2048'
+            'nama_wisata' => 'required|max:50|unique:tempat_wisata',
+            'foto' => 'required|image|max:2048'
         ], $messages);
 
-        $datas = ModelTempatWisata::find($id);
+        $datas = ModelTempatWisata::find($id_wisata);
 
         if (empty($request->nama_wisata)){
             $datas->nama_wisata = $datas->nama_wisata;
@@ -115,12 +109,9 @@ class MengelolaTempatWisataController extends Controller
             $datas->nama_wisata = $request->nama_wisata;
         }
 
-        $datas->alamat = $request->alamat;
-        $datas->maks_tiket = $request->maks_tiket;
-        $datas->harga = $request->harga;
 
-        if (empty($request->foto)){
-            $datas->foto = $datas->foto;
+        if (empty($request->nama_foto)){
+            $datas->nama_foto = $datas->nama_foto;
         }
         else{
             unlink('pelanggan/assets/images/fotowisata/'.$datas->foto); //menghapus file lama
@@ -131,13 +122,13 @@ class MengelolaTempatWisataController extends Controller
 
         }
         $datas->save();
-        return redirect('/admin/MengelolaTempatWisata')->with('alert-success','Data berhasil diubah!');
+        return redirect('/admin/MengelolaGaleri')->with('alert-success','Data berhasil diubah!');
     }
 
     public function delete($id) {
-    	$datas = ModelTempatWisata::find($id);
+    	$datas = ModelGaleri::find($id);
     	$datas->delete();
-    	return redirect('/admin/MengelolaTempatWisata')->with('alert-success','Data berhasil dihapus!');
+    	return redirect('/admin/MengelolaGaleri')->with('alert-success','Data berhasil dihapus!');
     }
 
 

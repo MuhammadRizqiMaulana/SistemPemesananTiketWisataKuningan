@@ -31,8 +31,11 @@ Route::get('/admin/DashboardAdmin', function () {
 Route::get('/admin/MengelolaTempatWisata','MengelolaTempatWisataController@index');
 Route::get('/admin/TambahTempatWisata','MengelolaTempatWisataController@tambah');
 Route::post('/admin/AksiTambahTempatWisata','MengelolaTempatWisataController@store');
-Route::get('/admin/UbahTempatWisata{id_wisata}','MengelolaTempatWisataController@edit');
-Route::post('/admin/AksiUbahTempatWisata{id_wisata}','MengelolaTempatWisataController@update');
-Route::get('/admin/HapusTempatWisata{id_wisata}','MengelolaTempatWisataController@delete');
+Route::get('/admin/UbahTempatWisata{id}','MengelolaTempatWisataController@edit');
+Route::post('/admin/AksiUbahTempatWisata{id}','MengelolaTempatWisataController@update');
+Route::get('/admin/HapusTempatWisata{id}','MengelolaTempatWisataController@delete');
 
-
+Route::get('/admin/MengelolaGaleri','MengelolaGaleriController@index');
+Route::get('/admin/TambahGaleri','MengelolaGaleriController@tambah');
+Route::post('/admin/AksiTambahGaleri','MengelolaGaleriController@store');
+Route::get('/admin/HapusGaleri{id}','MengelolaGaleriController@delete');

@@ -37,8 +37,8 @@
         </div>
       </li>
 
-     <li class="nav-item ">
-        <a class="nav-link" href="">
+     <li class="nav-item {{ Request::is('admin/MengelolaGaleri')? "active":""}}">
+        <a class="nav-link" href="{{url ('admin/MengelolaGaleri')}}">
           <i class="fab fa-fw fa-wpforms"></i>
           <span>Galeri</span>
         </a>

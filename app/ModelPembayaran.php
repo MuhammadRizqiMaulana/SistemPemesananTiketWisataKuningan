@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ModelPembayaran extends Model
 {
     protected $table  = 'pembayaran';  //nama tabel
-    protected $primaryKey   = 'id_pembayaran';  //primary key
+    protected $primaryKey   = 'id';  //primary key
     protected $fillable      = ['id_pemesanan', 
     							'nominal',
     							'bukti_tf',

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ModelTiket extends Model
 {
     protected $table        = 'tiket'; // nama tabel 
-    protected $primaryKey   = 'id_tiket'; // primary key tabel 
+    protected $primaryKey   = 'id'; // primary key tabel 
     protected $fillable     = ['id_pemesanan', 
     							'id_wisata', 
     							'nomor_tiket', 

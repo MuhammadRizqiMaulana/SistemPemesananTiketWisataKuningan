@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class ModelPemesanan extends Model
 {
+    public $incrementing = false;
     protected $table        = 'pemesanan'; // nama tabel 
-    protected $primaryKey   = 'id_pemesanan'; // primary key tabel 
+    protected $primaryKey   = 'id_pemesanan'; // primary key tabel
+    protected $keyType = 'string';
     protected $fillable     = ['id_pelanggan', 
     							'id_admin', 
     							'nama_pelanggan', 

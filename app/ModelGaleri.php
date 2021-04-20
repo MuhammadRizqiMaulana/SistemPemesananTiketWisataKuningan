@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ModelGaleri extends Model
 {
     protected $table  = 'galeri';  //nama tabel
-    protected $primaryKey   = 'id_galeri';  //primary key
+    protected $primaryKey   = 'id';  //primary key
     protected $fillable      = ['id_wisata', 
     							'nama_foto']; //field tabel
 
