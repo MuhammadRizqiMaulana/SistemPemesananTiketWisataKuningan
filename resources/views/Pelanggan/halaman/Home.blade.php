@@ -115,7 +115,7 @@
                         <img src="{{ url('pelanggan/assets/images/fotowisata/'.$wisata->foto) }}" height="400" width="350" alt="">
                             <div class="hover-effect">
                                 <div class="hover-content">
-                                    <a href="#" class="main-filled-button">Pesan Tiket</a>
+                                    <a href="/FormTiketWisata{{$wisata->id}}" class="main-filled-button">Pesan Tiket</a>
                                 </div>
                             </div>
                         </div>

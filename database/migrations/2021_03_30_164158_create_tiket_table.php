@@ -15,7 +15,7 @@ class CreateTiketTable extends Migration
     {
         Schema::create('tiket', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_pemesanan');
+            $table->string('id_pemesanan',100);
             $table->foreign('id_pemesanan')->references('id')->on('pemesanan')
             ->onDelete('cascade')
             ->onUpdate('cascade');

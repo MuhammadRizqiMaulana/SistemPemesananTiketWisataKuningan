@@ -26,7 +26,7 @@
                             <li class="scroll-to-section">
                                 <a href="#">&emsp;&emsp;&emsp;&emsp; Masuk</a>
                             </li>
-                            <div class="search-icon">
+                            <div class="search-icon ">
                                 <a href="#qwed" class="main-button">&nbsp; Buat Akun &nbsp;</a>
                             </div>
                         </ul>        

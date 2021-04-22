@@ -14,12 +14,12 @@ class CreatePemesananTable extends Migration
     public function up()
     {
         Schema::create('pemesanan', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('id_pelanggan');
+            $table->string('id', 100)->primary();
+            $table->unsignedBigInteger('id_pelanggan')->nullable();
             $table->foreign('id_pelanggan')->references('id')->on('pelanggan')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-            $table->unsignedBigInteger('id_admin');
+            $table->unsignedBigInteger('id_admin')->nullable();
             $table->foreign('id_admin')->references('id')->on('admin')
             ->onDelete('cascade')
             ->onUpdate('cascade');

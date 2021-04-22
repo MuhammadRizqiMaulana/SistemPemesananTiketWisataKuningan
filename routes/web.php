@@ -21,6 +21,8 @@ Route::get('/','HomeController@index');
 Route::get('/FormTiketWisata', function () {
     return view('Pelanggan.halaman.FormTiketWisata');
 });
+Route::get('/FormTiketWisata{id}','PemesananController@index');
+Route::post('/AksiPemesanan','PemesananController@store');
 
 
 // --------------Admin-------------------//
