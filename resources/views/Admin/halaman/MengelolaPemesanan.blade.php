@@ -46,7 +46,7 @@
                                                 <td>{{$tampil->id}}</td>
                                                 <td>{{$tampil->nama_pelanggan}}</td>
                                                 <td>
-                                                    @if ($tampil->status_pesan == '1')
+                                                  @if ($tampil->status_pesan == '1')
                                                        <span class="badge badge-warning">Menunggu Pembayaran</span>
                                                   @elseif ($tampil->status_pesan == '2')
                                                        <span class="badge badge-info">Menunggu Konfirmasi</span>
