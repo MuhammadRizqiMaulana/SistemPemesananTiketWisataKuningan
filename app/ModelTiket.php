@@ -18,4 +18,9 @@ class ModelTiket extends Model
         return $this->belongsTo(ModelTempatWisata::class,'id_wisata');
         //nama_modelTabelrelasinya,foreignkey di tabel tiket
     }
+
+    public function Pemesanan() { //wisata dimiliki oleh tiket
+        return $this->belongsTo(ModelPemesanan::class,'id_pemesanan');
+        //nama_modelTabelrelasinya,foreignkey di tabel tiket
+    }
 }

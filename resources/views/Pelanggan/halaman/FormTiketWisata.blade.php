@@ -12,7 +12,7 @@
                 <div class="col-lg-8 offset-lg-2">
                     <div class="section-heading">
                         <h6>Pemesanan Tiket Wisata</h6>
-                        <h2>Wisata Palutungan</h2>
+                        <h2>{{$wisata->nama_wisata}}</h2>
                     </div>
                 </div>
             </div>
@@ -44,12 +44,22 @@
 
                     <input type="text" name="id_wisata" value="{{$wisata->id}}" hidden>
                     
-                    <label><strong>Nama Pemesan : </strong></label>
+                    @if(Session::get('loginPelanggan'))
+                        <input type="text" name="id_pelanggan" value="{{Session::get('id_pelanggan')}}" hidden>
+                        <label><strong>Nama Pemesan : </strong></label>
+                            <input type="text" class="form-control" name="nama_pelanggan" placeholder="Masukkan Nama" onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'Masukkan Nama'" value="{{Session::get('nama_pelanggan')}}">
+                            @if ($errors->has('nama_pelanggan'))
+                            <span class="text-danger"><p class="text-right">* {{$errors->first('nama_pelanggan') }}</p></span>
+                            @endif
+                    @else
+                        <label><strong>Nama Pemesan : </strong></label>
                         <input type="text" class="form-control" name="nama_pelanggan" placeholder="Masukkan Nama" onfocus="this.placeholder = ''"
-                                     onblur="this.placeholder = 'Masukkan Nama'">
+                                    onblur="this.placeholder = 'Masukkan Nama'">
                         @if ($errors->has('nama_pelanggan'))
-                          <span class="text-danger"><p class="text-right">* {{$errors->first('nama_pelanggan') }}</p></span>
+                        <span class="text-danger"><p class="text-right">* {{$errors->first('nama_pelanggan') }}</p></span>
                         @endif
+                    @endif
 
                     <label><strong>Tanggal Berwisata : </strong></label>
                         <input type="date" class="form-control" name="tanggal_wisata" placeholder="Pilih Tanggal Wisata" onfocus="this.placeholder = ''"

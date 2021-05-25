@@ -24,7 +24,7 @@
             <div class="img-fill">
                 <img src="pelanggan/assets/images/slide-02.jpg" alt="">
                 <div class="text-content">
-                  <h3>Integrated Marketing Media</h3>
+                  <h3>Selamat Datang di Wisata Kuningan</h3>
                   <h5>Pemesanan Tiket Online</h5>
                   <a href="#testimonials" class="main-filled-button">Pesan Tiket</a>
                   <a href="#" class="main-stroked-button">Buat Akun</a>

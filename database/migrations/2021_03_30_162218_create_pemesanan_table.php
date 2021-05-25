@@ -24,6 +24,13 @@ class CreatePemesananTable extends Migration
             ->onDelete('cascade')
             ->onUpdate('cascade');
             $table->string('nama_pelanggan',50);
+            $table->unsignedBigInteger('id_wisata')->nullable();
+            $table->foreign('id_wisata')->references('id')->on('tempat_wisata')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+            $table->date('tanggal_wisata');
+            $table->string('jumlah_tiket',50);
+            $table->string('jumlah_harga',50);
             $table->string('status_pesan',50);
             $table->timestamps();
         });

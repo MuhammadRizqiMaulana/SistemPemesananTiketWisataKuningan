@@ -11,27 +11,27 @@ class MengelolaGaleriController extends Controller
 {
         public function index()     {  
 
-        //if(!Session::get('login')){
-        //    return redirect('LoginAdmin')->with('alert','Anda harus login dulu');
-        //}
-        //else{
+        if(!Session::get('LoginAdmin')){
+            return redirect('admin/LoginAdmin')->with('alert','Anda harus login dulu');
+        }
+        else{
 
         $datas = ModelGaleri::get();         
         	return view('admin.halaman.MengelolaGaleri',compact('datas'));     
-        //}  
+        }  
     }
 
     public function tambah() {
 
-        //if(!Session::get('login')){
-        //    return redirect('LoginAdmin')->with('alert','Anda harus login dulu');
-        //}
-        //else{
-		//
+        if(!Session::get('LoginAdmin')){
+            return redirect('admin/LoginAdmin')->with('alert','Anda harus login dulu');
+        }
+        else{
+		
             $wisata = ModelTempatWisata::get();         
 
         	return view('admin.halaman.tambah_data.TambahGaleri',compact('wisata'));
-        //}
+        }
     }
 
     public function store( Request $request) {
@@ -70,8 +70,8 @@ class MengelolaGaleriController extends Controller
 
    	public function edit($id) {
 
-        if(!Session::get('login')){
-            return redirect('LoginAdmin')->with('alert','Anda harus login dulu');
+        if(!Session::get('LoginAdmin')){
+            return redirect('admin/LoginAdmin')->with('alert','Anda harus login dulu');
         }
         else{
 

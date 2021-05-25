@@ -45,14 +45,22 @@ class PemesananController extends Controller
     		'id' => 'required|max:100|unique:pemesanan',
     		'nama_pelanggan' => 'required|max:50',
             'id_wisata' => 'required',
+            'id_pelanggan' => 'nullable',
             'tanggal_wisata' => 'required|date',
             'jumlah_tiket' => 'required|numeric|min:1',
     	], $messages);
 
+        $wisata = ModelTempatWisata::find($request->id_wisata);
+
         $pesan = new ModelPemesanan();
         $pesan->id = $request->id;
+        $pesan->id_pelanggan = $request->id_pelanggan;
         $pesan->nama_pelanggan = $request->nama_pelanggan;
-        $pesan->status_pesan = "Menunggu Pembayaran";
+        $pesan->id_wisata = $request->id_wisata;
+        $pesan->tanggal_wisata = $request->tanggal_wisata;
+        $pesan->jumlah_tiket = $request->jumlah_tiket;
+        $pesan->jumlah_harga = $request->jumlah_tiket * $wisata->harga;
+        $pesan->status_pesan = 1;
     	$pesan->save();
         $pesan->id;
 
@@ -67,75 +75,22 @@ class PemesananController extends Controller
             $tiket->id_wisata = $request->id_wisata;
             $tiket->nomor_tiket = $NomorTiket + 1;
             $tiket->tanggal_wisata = $request->tanggal_wisata;
-            $tiket->status_tiket = "Belum Datang";
+            $tiket->status_tiket = 1;
             $tiket->save();
         }
 
-    	return redirect('/')->with('alert-success','Data berhasil ditambahkan!');
+    	return redirect('/Pembayaran'.$pesan->id)->with('alert-success','Data berhasil ditambahkan!');
     }
 
-   	public function edit($id) {
+    public function detailPemesanan($id) {
 
-        if(!Session::get('login')){
-            return redirect('LoginAdmin')->with('alert','Anda harus login dulu');
-        }
-        else{
-
-        	$datas = ModelGaleri::find($id);
-        	return view('admin.halaman.ubah_data.UbahGaleri',compact('datas'));
-        }
+        //if(!Session::get('login')){
+        //   return redirect('LoginAdmin')->with('alert','Anda harus login dulu');
+        //}
+        //else{
+        	$pemesanan = ModelPemesanan::find($id);
+        	return view('pelanggan.halaman.DetailPemesanan',compact('pemesanan'));
+        //}
     }
-
-    public function update($id, Request $request) {
-        $messages = [
-            'required' => ':attribute masih kosong',
-            'min' => ':attribute diisi minimal :min karakter',
-            'max' => ':attribute diisi maksimal :max karakter',
-            'numeric' => ':attribute harus berupa angka',
-            'unique' => ':attribute sudah ada',
-            'email' => ':attribute harus berupa email',
-            'image' => ':attribute harus berupa gambar',
-            'harga.digits_between' => ':attribute diisi antara 0 sampai 15 digit',
-            'harga.min' => ':attribute tidak boleh kurang dari 0',
-            'maks_tiket.min' => 'tiket tidak boleh kurang dari 0',
-            'foto.max' => 'tidak boleh lebih 2 Mb'
-        ];
-
-        $this->validate($request, [
-            'nama_wisata' => 'required|max:50|unique:tempat_wisata',
-            'foto' => 'required|image|max:2048'
-        ], $messages);
-
-        $datas = ModelTempatWisata::find($id_wisata);
-
-        if (empty($request->nama_wisata)){
-            $datas->nama_wisata = $datas->nama_wisata;
-        }
-        else {
-            $datas->nama_wisata = $request->nama_wisata;
-        }
-
-
-        if (empty($request->nama_foto)){
-            $datas->nama_foto = $datas->nama_foto;
-        }
-        else{
-            unlink('pelanggan/assets/images/fotowisata/'.$datas->foto); //menghapus file lama
-            $file = $request->file('foto'); // menyimpan data gambar yang diupload ke variabel $file
-            $nama_file = time()."_".$file->getClientOriginalName();
-            $file->move('pelanggan/assets/images/fotowisata',$nama_file); // isi dengan nama folder tempat kemana file diupload
-            $datas->foto = $nama_file;
-
-        }
-        $datas->save();
-        return redirect('/admin/MengelolaGaleri')->with('alert-success','Data berhasil diubah!');
-    }
-
-    public function delete($id) {
-    	$datas = ModelGaleri::find($id);
-    	$datas->delete();
-    	return redirect('/admin/MengelolaGaleri')->with('alert-success','Data berhasil dihapus!');
-    }
-
 
 }
