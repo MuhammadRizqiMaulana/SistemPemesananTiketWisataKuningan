@@ -14,6 +14,8 @@ class HomeController extends Controller
 {
     public function index(){
     	$tempatWisata = ModelTempatWisata::all();
-    	return view('pelanggan.halaman.Home',compact('tempatWisata')); 
+        $galeri = ModelGaleri::all();
+
+    	return view('pelanggan.halaman.Home',compact('tempatWisata','galeri')); 
     }
 }

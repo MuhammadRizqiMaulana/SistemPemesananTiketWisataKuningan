@@ -50,46 +50,23 @@
                 <div class="filters">
                     <ul>
                         <li class="active" data-filter="*">Semua</li>
-                        <li data-filter=".des">Palutungan</li>
-                        <li data-filter=".dev">Linggarjati</li>
-                        <li data-filter=".gra">Cilengkrang</li>
-                        <li data-filter=".tsh">Sukageuri View</li>
+                        @foreach ($galeri as $galeris)
+                          <li data-filter=".{{$galeris->TempatWisata->id}}">{{$galeris->TempatWisata->nama_wisata}}</li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
             <div class="col-lg-9">
                 <div class="filters-content">
                     <div class="row grid">
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all des">
+                      @foreach ($galeri as $tampil)
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all {{$tampil->TempatWisata->id}}">
                           <div class="item">
-                            <a href="pelanggan/assets/images/project-big-item-01.jpg" data-lightbox="image-1" data-title="Our Projects"><img src="pelanggan/assets/images/project-item-01.jpg" alt=""></a>
+                            <a href="{{ url('pelanggan/assets/images/galeri/'.$tampil->nama_foto) }}" data-lightbox="image-1" data-title="Our Projects"><img src="{{ url('pelanggan/assets/images/galeri/'.$tampil->nama_foto) }}" alt=""></a>
                           </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all dev">
-                          <div class="item">
-                            <a href="pelanggan/assets/images/project-big-item-02.jpg" data-lightbox="image-1" data-title="Our Projects"><img src="pelanggan/assets/images/project-item-02.jpg" alt=""></a>
-                          </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all gra">
-                          <div class="item">
-                            <a href="pelanggan/assets/images/project-big-item-03.jpg" data-lightbox="image-1" data-title="Our Projects"><img src="pelanggan/assets/images/project-item-03.jpg" alt=""></a>
-                          </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all tsh">
-                          <div class="item">
-                            <a href="pelanggan/assets/images/project-big-item-04.jpg" data-lightbox="image-1" data-title="Our Projects"><img src="pelanggan/assets/images/project-item-04.jpg" alt=""></a>
-                          </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all dev">
-                          <div class="item">
-                            <a href="pelanggan/assets/images/project-big-item-05.jpg" data-lightbox="image-1" data-title="Our Projects"><img src="pelanggan/assets/images/project-item-05.jpg" alt=""></a>
-                          </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all des">
-                          <div class="item">
-                            <a href="pelanggan/assets/images/project-big-item-06.jpg" data-lightbox="image-1" data-title="Our Projects"><img src="pelanggan/assets/images/project-item-06.jpg" alt=""></a>
-                          </div>
-                        </div>
+                      @endforeach
+                        
                     </div>
                 </div>
             </div>
